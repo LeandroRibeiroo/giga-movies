@@ -31,9 +31,13 @@ const tmdbApi = {
     const url = 'tv/' + type;
     return axiosClient.get(url, params);
   },
-  getVideos: (category: string, id: string) => {
+  getVideos: (
+    category: string,
+    id: number,
+    params: AxiosRequestConfig<any> | undefined
+  ) => {
     const url = category + '/' + id + '/videos';
-    return axiosClient.get(url, { params: {} });
+    return axiosClient.get(url, params);
   },
   search: (category: string, params: AxiosRequestConfig<any> | undefined) => {
     const url = 'search/' + category;
@@ -47,13 +51,17 @@ const tmdbApi = {
     const url = category + '/' + id;
     return axiosClient.get(url, params);
   },
-  credits: (category: string, id: string) => {
+  credits: (category: string, id: number) => {
     const url = category + '/' + id + '/credits';
     return axiosClient.get(url, { params: {} });
   },
-  similar: (category: string, id: string) => {
+  similar: (
+    category: string,
+    id: number,
+    params: AxiosRequestConfig<any> | undefined
+  ) => {
     const url = category + '/' + id + '/similar';
-    return axiosClient.get(url, { params: {} });
+    return axiosClient.get(url, params);
   },
 };
 

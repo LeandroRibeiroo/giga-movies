@@ -32,11 +32,14 @@ const MovieList = ({ category, type, id }: MovieListProps): JSX.Element => {
             response = (await tmdbApi.getTvList(type, params)) as ResponseProps;
         }
       } else {
-        response = (await tmdbApi.similar(category, id ?? '')) as ResponseProps;
+        response = (await tmdbApi.similar(
+          category,
+          id ?? 0,
+          params
+        )) as ResponseProps;
       }
 
       setItems(response.results);
-      console.log(response.results);
     };
 
     getList();

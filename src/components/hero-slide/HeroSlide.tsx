@@ -81,12 +81,15 @@ const HeroSlideItem = ({
   );
 
   const setModalActive = async () => {
+    const params = {
+      language: 'pt-BR',
+    };
+
     const modal = document.querySelector(`#modal_${item.id}`);
 
-    const videos = (await tmdbApi.getVideos(
-      'movie',
-      String(item.id)
-    )) as ResponseProps;
+    const videos = (await tmdbApi.getVideos('movie', item.id, {
+      params,
+    })) as ResponseProps;
 
     if (videos.results.length > 0) {
       const trailersArray: any[] = [];
